@@ -32,7 +32,7 @@
                     map.setView([lat, lng], 15);
 
                     L.marker([lat, lng]).addTo(map)
-                        .bindPopup('Tu ubicación')
+                        .bindPopup(`Tu ubicación: [${lat}, ${lng}]`)
                         .openPopup();
                 },
                 () => {
