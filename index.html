@@ -15,34 +15,8 @@
 <body>
     <h1>Geolocalización con Leaflet</h1>
     <div id="map"></div>
-    
 
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script>
-        const map = L.map('map').setView([0, 0], 2);
-
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    const lat = position.coords.latitude;
-                    const lng = position.coords.longitude;
-                    map.setView([lat, lng], 15);
-
-                    L.marker([lat, lng]).addTo(map)
-                        .bindPopup(`Tu ubicación: [${lat}, ${lng}]`)
-                        .openPopup();
-                },
-                () => {
-                    alert('No se pudo obtener la geolocalización.');
-                }
-            );
-        } else {
-            alert('Tu navegador no soporta geolocalización.');
-        }
-    </script>
+    <script src="ubicacion.js"> </script>
 </body>
 </html>
