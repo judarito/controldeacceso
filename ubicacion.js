@@ -5,6 +5,15 @@ const geolocation =()=>{
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
+
+     // Crear un icono personalizado
+     const customIcon = L.icon({
+        iconUrl: 'Trabajador.png', // URL de tu icono personalizado
+        iconSize: [38, 38], // Tamaño del icono
+        iconAnchor: [19, 38], // Punto del icono que se anclará al mapa
+        popupAnchor: [0, -38] // Punto desde el cual se abrirá el popup
+    });
+
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
             (position) => {
@@ -19,7 +28,7 @@ const geolocation =()=>{
                 .openPopup();
 
 
-                L.marker([lat, lng]).addTo(map)
+                L.marker([lat, lng], { icon: customIcon }).addTo(map)
                     .bindPopup(`Tu ubicación: [${lat}, ${lng}]`)
                     .openPopup();
 
@@ -37,6 +46,9 @@ const geolocation =()=>{
                 }else{
                     alert('Si estas en Messer');
                 }
+
+                const userAgent = navigator.userAgent;
+                console.log("Información del dispositivo:", userAgent);
             },
             () => {
                 alert('No se pudo obtener la geolocalización.');
